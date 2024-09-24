@@ -16,7 +16,6 @@ class Restaurant(models.Model):
     category = models.CharField(max_length=100, null=True, blank=True)
     image_url = models.CharField(max_length=100, null=True, blank=True)
     favorited_by = models.ManyToManyField(User, related_name='favorite_restaurants', blank=True)
-    phone = models.CharField(max_length=15, null=True, blank=True)
 
 
     def __str__(self):
