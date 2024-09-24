@@ -2,7 +2,7 @@
 {% load static %} 
 
 {% block head %}
-<link rel="stylesheet" href="" />
+<link rel="stylesheet" href="{% static 'css/restaurants/restaurant-detail.css' %}">
 {% endblock %} 
 
 {% block content %}
@@ -10,9 +10,9 @@
   <div class = "restaurant-info">
     <h1>{{ restaurant.name }}</h1>
     <p>Location: {{ restaurant.location }}</p>
-    <p>Category: {{ restaurant.category }}</p>
+    {% comment %} <p>Category: {{ restaurant.category }}</p> {% endcomment %}
     <!-- <p>Image URL: {{ restaurant.image_url }}</p> -->
-    <img src="{{ restaurant.image_url }}" alt="{{ restaurant.name }} thumbnail" class="restaurant-image">
+    {% comment %} <img src="{{ restaurant.image_url }}" alt="{{ restaurant.name }} thumbnail" class="restaurant-image"> {% endcomment %}
   </div>
 
   <form action="{% url 'save-restaurant' restaurant_id %}" method="POST">

@@ -83,6 +83,7 @@ def signup(request):
 def restaurant_detail(request, restaurant_id):
     # Call the function to get restaurant details by its ID
     restaurant_data = get_restaurant_details_by_id(restaurant_id)
+    print(restaurant_data)
     
     if restaurant_data:
         restaurant, created = Restaurant.objects.get_or_create(
@@ -90,8 +91,8 @@ def restaurant_detail(request, restaurant_id):
             defaults={
                 'name': restaurant_data['name'],
                 'location': restaurant_data['location'],
-                'category': restaurant_data.get('category', 'Unknown'),
-                'image_url': restaurant_data.get('image_url', 'default-image-url')
+                # 'category': restaurant_data.get('category', 'Unknown'),
+                # 'image_url': restaurant_data.get('image_url', 'default-image-url')
             }
         )
         
@@ -101,24 +102,20 @@ def restaurant_detail(request, restaurant_id):
         review_form = ReviewForm()
         reviews = Review.objects.filter(restaurant=restaurant)
     
-    # Check if the restaurant was found
-    if restaurant:
         return render(request, 'restaurants/detail.html', {'restaurant': restaurant, 'review_form': review_form, 'reviews': reviews, 'restaurant_id': restaurant_id})
-    else:
-        return render(request, 'restaurants/detail.html', {'error': 'Restaurant not found'})
 
 @login_required  
 def save_restaurant(request, restaurant_id):
     restaurant_data = get_restaurant_details_by_id(restaurant_id)
     
-    if restaurant_data:
+    if not restaurant_data or not restaurant_data.get('name'):
         restaurant, created = Restaurant.objects.get_or_create(
             yelp_id=restaurant_id,
             defaults={
                 'name': restaurant_data['name'],
                 'location': restaurant_data['location'],
-                'category': restaurant_data.get('category'),
-                'image_url': restaurant_data.get('image_url')
+                # 'category': restaurant_data.get('category'),
+                # 'image_url': restaurant_data.get('image_url')
             }
         )
         
