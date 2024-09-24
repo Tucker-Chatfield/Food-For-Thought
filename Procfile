@@ -1,0 +1,1 @@
+web: gunicorn Food4Thought.wsgi
