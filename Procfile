@@ -1,1 +1,1 @@
-web: gunicorn Food4Thought.wsgi
+web: gunicorn Food4Thought.wsgi --log-file -
