@@ -46,7 +46,9 @@
     <h3>{% if edit_review_id %}Edit{% else %}Add{% endif %} a Review</h3>
     <form action="{% url 'add-review' restaurant_id %}" method="POST">
       {% csrf_token %}
-      {{ review_form.as_p }}
+      <table>
+      {{ review_form.as_table }}
+      </table>
       <button type="submit" class="btn submit">Submit Review</button>
     </form>
   {% else %}

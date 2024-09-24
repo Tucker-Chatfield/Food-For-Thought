@@ -94,11 +94,20 @@ def restaurant_detail(request, restaurant_id):
                 'image_url': restaurant_data.get('image_url', 'default-image-url')
             }
         )
-        return render(request, 'restaurants/detail.html', {'restaurant': restaurant, 'restaurant_id': restaurant_id})
+        
+        if created:
+            restaurant.save()
+            
+        review_form = ReviewForm()
+        reviews = Review.objects.filter(restaurant=restaurant)
     
-    # If no restaurant data is found, return a 404 page
-    return render(request, '404.html', status=404)
-    
+    # Check if the restaurant was found
+    if restaurant:
+        return render(request, 'restaurants/detail.html', {'restaurant': restaurant, 'review_form': review_form, 'reviews': reviews, 'restaurant_id': restaurant_id})
+    else:
+        return render(request, 'restaurants/detail.html', {'error': 'Restaurant not found'})
+
+@login_required  
 def save_restaurant(request, restaurant_id):
     restaurant_data = get_restaurant_details_by_id(restaurant_id)
     
@@ -116,7 +125,7 @@ def save_restaurant(request, restaurant_id):
         request.user.favorite_restaurants.add(restaurant)
 
         messages.success(request, 'Restaurant saved to your favorites!')
-        return redirect('restaurant-detail', restaurant_id=restaurant_id)
+        return redirect(reverse('favorites-list'))
     else:
         return render(request, 'restaurants/detail.html', {'error': 'Restaurant not found'})
     
@@ -136,8 +145,10 @@ def unfavorite_restaurant(request, restaurant_id):
     return redirect('login')
     
 
-def review_update(request, restaurant_id):
-    restaurant = Restaurant.objects.get(yelp_id=restaurant_id)
+@login_required
+def review_update(request, restaurant_id, review_id):
+    review = get_object_or_404(Review, id=review_id, user=request.user)
+    restaurant = get_restaurant_details_by_id(restaurant_id)
     
     if request.method == 'POST':
         form = ReviewForm(request.POST, instance=review)
