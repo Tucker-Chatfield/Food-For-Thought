@@ -81,7 +81,6 @@ button.unfavorite:hover {
   margin-right: 10px;
 }
 
-<<<<<<< HEAD
 /* Wrapper for card layout */
 .card-wrapper {
   display: flex;
@@ -92,7 +91,8 @@ button.unfavorite:hover {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-=======
+}
+
 /* Header styling */
 h1 {
   text-align: center;
@@ -127,7 +127,6 @@ button {
 button:hover {
   cursor: pointer;
   background-color: darkorange;
->>>>>>> 76e495ba3d87c0e1bb1d8ed141dacdf1276e4133
 }
 
 .details-button {
