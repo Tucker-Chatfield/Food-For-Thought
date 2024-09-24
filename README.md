@@ -9,6 +9,8 @@ Food4Thought is an innovative web application designed to help you discover rest
 - Our motivation to make this web application was because of a common interest in food and wanted to implement an API from an established website.
 - We built this project to learn how to use the python stack and to learn its capabilties.
 
+### [TRY IT OUT](https://food4thought-d60766d1db21.herokuapp.com/)
+
 ## Installation
 
 - Install PSQL from your terminal
@@ -30,7 +32,21 @@ Food4Thought is an innovative web application designed to help you discover rest
 
 ## Screenshots
 
-
+## Screenshots
+### Home Page
+![Home Page](main_app/static/images/screenshots/home.png)
+### Details Page
+![Details Page](main_app/static/images/screenshots/detail.png)
+### Favorite Page
+![Favorite Page](main_app/static/images/screenshots/favorite.png)
+### Update Review Page
+![Update Review](main_app/static/images/screenshots/updateReview.png)
+### Delete Review Page
+![Delete Review](main_app/static/images/screenshots/deleteReview.png)
+### Login Page
+![Login Page](main_app/static/images/screenshots/login.png)
+### Signup Page
+![Signup Page](main_app/static/images/screenshots/signup.png)
 
 ## Credits
 
@@ -66,11 +82,7 @@ https://fusion.yelp.com/
 
 For this project, we worked as a group of 4 to implement an application using the python stack (Python, Django and SQL).
 
-![Django](https://img.shields.io/badge/-Django-2b244f?style=flat&logo=django)
-![Python/Python3](https://img.shields.io/badge/-Python-2b244f?style=flat&logo=python)
-![SQL](https://img.shields.io/badge/SQL-2b244f)
-![HTML5](https://img.shields.io/badge/-HTML5-2b244f?style=flat&logo=html5)
-![CSS3](https://img.shields.io/badge/-CSS-2b244f?style=flat&logo=css3)
+![Django](https://img.shields.io/badge/-Django-2b244f?style=flat&logo=django) ![Python/Python3](https://img.shields.io/badge/-Python-2b244f?style=flat&logo=python) ![SQL](https://img.shields.io/badge/SQL-2b244f) ![HTML5](https://img.shields.io/badge/-HTML5-2b244f?style=flat&logo=html5) ![CSS3](https://img.shields.io/badge/-CSS-2b244f?style=flat&logo=css3)
 
 ## Upcoming Features
 
